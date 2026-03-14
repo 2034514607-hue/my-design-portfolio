@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的设计作品集</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "微软雅黑", sans-serif; }
+        body { background: #f8f9fa; color: #333; line-height: 1.6; padding-bottom: 50px; }
+        header { background: #2c3e50; color: white; padding: 2rem 1rem; text-align: center; margin-bottom: 3rem; }
+        header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.1rem; opacity: 0.9; }
+        .category-tabs { max-width: 1000px; margin: 0 auto 2rem; text-align: center; }
+        .tab-btn { background: white; border: 1px solid #ddd; padding: 0.8rem 1.5rem; margin: 0 0.5rem; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+        .tab-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+        .work-card { background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.3s ease; display: none; }
+        .work-card.show { display: block; }
+        .work-card:hover { transform: translateY(-6px); }
+        .work-preview { width: 100%; height: 200px; background: #f1f1f1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .work-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .work-preview .placeholder { color: #666; font-size: 1rem; }
+        .work-info { padding: 1.5rem; }
+        .work-info h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #2c3e50; }
+        .work-info p { color: #666; margin-bottom: 1.2rem; font-size: 0.95rem; }
+        .btn-group { display: flex; gap: 0.8rem; }
+        .btn { padding: 0.6rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: background-color 0.3s; text-decoration: none; display: inline-block; text-align: center; flex: 1; }
+        .btn-preview { background: #007bff; color: white; }
+        .btn-preview:hover { background: #0056b3; }
+        .btn-download { background: #28a745; color: white; }
+        .btn-download:hover { background: #218838; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem; }
+        .modal-content { width: 100%; height: 100%; background: white; border-radius: 8px; overflow: hidden; position: relative; }
+        .close-modal { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; color: #333; cursor: pointer; z-index: 1001; }
+        .preview-content { width: 100%; height: 100%; border: none; object-fit: contain; }
+        @media (max-width: 768px) { header h1 { font-size: 1.8rem; } .tab-btn { padding: 0.6rem 1rem; margin: 0 0.2rem 0.5rem; } .works-grid { grid-template-columns: 1fr; } .modal { padding: 1rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>猫爪的设计作品集</h1>
+        <p>包含PDF设计 & 图片设计作品</p>
+    </header>
+    <div class="category-tabs">
+        <button class="tab-btn active" data-category="all">全部作品</button>
+        <button class="tab-btn" data-category="pdf">PDF设计</button>
+        <button class="tab-btn" data-category="image">图片设计</button>
+    </div>
+    <div class="container">
+        <div class="works-grid">
+            
+            <div class="work-card" data-category="pdf">
+                <div class="work-preview"><img src="images/covers/大创答辩PPT.png" alt="大创答辩PPT"></div>
+                <div class="work-info">
+                    <h3>大创答辩PPT</h3>
+                    <p>简介：PDF设计作品 - 大创答辩PPT</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="pdf" data-src="pdfs/大创答辩PPT.pdf">在线预览</a>
+                        <a href="pdfs/大创答辩PPT.pdf" download class="btn btn-download">下载文件</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="pdf">
+                <div class="work-preview"><img src="images/covers/挑战杯路演PPT.png" alt="挑战杯路演PPT"></div>
+                <div class="work-info">
+                    <h3>挑战杯路演PPT</h3>
+                    <p>简介：PDF设计作品 - 挑战杯路演PPT</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="pdf" data-src="pdfs/挑战杯路演PPT.pdf">在线预览</a>
+                        <a href="pdfs/挑战杯路演PPT.pdf" download class="btn btn-download">下载文件</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/背板1.png" alt="背板1"></div>
+                <div class="work-info">
+                    <h3>背板1</h3>
+                    <p>简介：图片设计作品 - 背板1</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/背板1.png">在线预览</a>
+                        <a href="images/背板1.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/节气海报2.png" alt="节气海报2"></div>
+                <div class="work-info">
+                    <h3>节气海报2</h3>
+                    <p>简介：图片设计作品 - 节气海报2</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/节气海报2.png">在线预览</a>
+                        <a href="images/节气海报2.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/节气海报3.png" alt="节气海报3"></div>
+                <div class="work-info">
+                    <h3>节气海报3</h3>
+                    <p>简介：图片设计作品 - 节气海报3</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/节气海报3.png">在线预览</a>
+                        <a href="images/节气海报3.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/节气海报1.png" alt="节气海报1"></div>
+                <div class="work-info">
+                    <h3>节气海报1</h3>
+                    <p>简介：图片设计作品 - 节气海报1</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/节气海报1.png">在线预览</a>
+                        <a href="images/节气海报1.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/明信片美工设计1.png" alt="明信片美工设计1"></div>
+                <div class="work-info">
+                    <h3>明信片美工设计1</h3>
+                    <p>简介：图片设计作品 - 明信片美工设计1</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/明信片美工设计1.png">在线预览</a>
+                        <a href="images/明信片美工设计1.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/明信片美工设计2.jpg" alt="明信片美工设计2"></div>
+                <div class="work-info">
+                    <h3>明信片美工设计2</h3>
+                    <p>简介：图片设计作品 - 明信片美工设计2</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/明信片美工设计2.jpg">在线预览</a>
+                        <a href="images/明信片美工设计2.jpg" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/明信片美工设计3.png" alt="明信片美工设计3"></div>
+                <div class="work-info">
+                    <h3>明信片美工设计3</h3>
+                    <p>简介：图片设计作品 - 明信片美工设计3</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/明信片美工设计3.png">在线预览</a>
+                        <a href="images/明信片美工设计3.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/明信片美工设计4.png" alt="明信片美工设计4"></div>
+                <div class="work-info">
+                    <h3>明信片美工设计4</h3>
+                    <p>简介：图片设计作品 - 明信片美工设计4</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/明信片美工设计4.png">在线预览</a>
+                        <a href="images/明信片美工设计4.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/海报设计3.png" alt="海报设计3"></div>
+                <div class="work-info">
+                    <h3>海报设计3</h3>
+                    <p>简介：图片设计作品 - 海报设计3</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/海报设计3.png">在线预览</a>
+                        <a href="images/海报设计3.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/海报设计2.png" alt="海报设计2"></div>
+                <div class="work-info">
+                    <h3>海报设计2</h3>
+                    <p>简介：图片设计作品 - 海报设计2</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/海报设计2.png">在线预览</a>
+                        <a href="images/海报设计2.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/海报设计1.png" alt="海报设计1"></div>
+                <div class="work-info">
+                    <h3>海报设计1</h3>
+                    <p>简介：图片设计作品 - 海报设计1</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/海报设计1.png">在线预览</a>
+                        <a href="images/海报设计1.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="work-card" data-category="image">
+                <div class="work-preview"><img src="images/海报设计4.png" alt="海报设计4"></div>
+                <div class="work-info">
+                    <h3>海报设计4</h3>
+                    <p>简介：图片设计作品 - 海报设计4</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-preview" data-type="image" data-src="images/海报设计4.png">在线预览</a>
+                        <a href="images/海报设计4.png" download class="btn btn-download">下载图片</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="modal" id="previewModal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <iframe class="preview-content pdf-viewer" id="pdfViewer" src="" style="display: none;"></iframe>
+            <img class="preview-content image-viewer" id="imageViewer" src="" style="display: none;">
+        </div>
+    </div>
+    <script>
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const workCards = document.querySelectorAll('.work-card');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const category = this.getAttribute('data-category');
+                workCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) card.classList.add('show');
+                    else card.classList.remove('show');
+                });
+            });
+        });
+        workCards.forEach(card => card.classList.add('show'));
+        const modal = document.getElementById('previewModal');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const imageViewer = document.getElementById('imageViewer');
+        const closeModal = document.querySelector('.close-modal');
+        const previewBtns = document.querySelectorAll('.btn-preview');
+        previewBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const type = this.getAttribute('data-type');
+                const src = this.getAttribute('data-src');
+                pdfViewer.style.display = 'none';
+                imageViewer.style.display = 'none';
+                if (type === 'pdf') { pdfViewer.src = src; pdfViewer.style.display = 'block'; }
+                else if (type === 'image') { imageViewer.src = src; imageViewer.style.display = 'block'; }
+                modal.style.display = 'block';
+            });
+        });
+        function closePreviewModal() { modal.style.display = 'none'; pdfViewer.src = ''; imageViewer.src = ''; }
+        closeModal.addEventListener('click', closePreviewModal);
+        window.addEventListener('click', e => { if (e.target === modal) closePreviewModal(); });
+    </script>
+</body>
+</html>
